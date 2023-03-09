@@ -24,7 +24,6 @@ function createMarkup(items) {
         })
         .join('');
 }
-
 galleryRef.addEventListener("click", (e) => {
     e.preventDefault();
     if (e.target.nodeName !== "IMG") {
@@ -41,7 +40,6 @@ galleryRef.addEventListener("click", (e) => {
             },
         }
     );
-    
     instance.show();
 
     function onEscBtn(e) {
