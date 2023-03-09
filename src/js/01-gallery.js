@@ -5,13 +5,7 @@ console.log(`galleryItems:`, galleryItems);
 
 const galleryRef = document.querySelector('.gallery');
 
-// const ulRef = document.createElement('ul');
-
-const markup = createMarkup(galleryItems);
-
-// ulRef.innerHTML = markup;
-
-galleryRef.innerHTML = markup;
+galleryRef.innerHTML = createMarkup(galleryItems);
 
 function createMarkup(items) {
     return items.map(({ preview, original, description }) => {
@@ -30,5 +24,32 @@ function createMarkup(items) {
         })
         .join('');
 }
+
+galleryRef.addEventListener("click", (e) => {
+    e.preventDefault();
+    if (e.target.nodeName !== "IMG") {
+        return;
+    }
+    const instance = basicLightbox.create(
+        `<img src="${e.target.dataset.source}"/>`,
+        {
+            onShow: (_instance) => {
+                galleryRef.addEventListener('keydown', onEscBtn);
+            },
+            onclose: (_instance) => {
+                galleryRef.removeEventListener('keydown', onEscBtn);
+            },
+        }
+    );
+    
+    instance.show();
+
+    function onEscBtn(e) {
+        if (e.code === 'Escape') {
+            instance.close();
+        }    
+    }
+});
+
 
 
