@@ -18,11 +18,13 @@ function createMarkup(items) {
         .join('');
 }
 
-galleryRef.addEventListener("click", (e) => {
-    e.preventDefault();
-    if (e.target.nodeName !== "IMG") {
-        return;
-    }
-    var lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250, });
+var lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250, });
+
+// galleryRef.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     if (e.target.nodeName !== "IMG") {
+//         return;
+//     }
+//     var lightbox = new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250, });
     
-});
+// });
